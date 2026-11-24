@@ -1,11 +1,5 @@
 # 🗣️ Conversational Emotion Recognizer (Advanced AI Companion)
 
-> **Team project.** The original repository is by [vidhhya1](https://github.com/vidhhya1/Conversational-Emotion-Recognizer), who developed the base project, including the fine-tuned emotion classifier. This copy is maintained by [Abhinaaya](https://github.com/Abhinaaya).
->
-> **Contributions in this copy (Abhinaaya):**
-> - Emotion- and pitch-conditioned prompt design and response generation with Google Gemini, including fallback replies when the API fails (`backend/response_generator.py`).
-> - End-to-end pipeline integration: WebSocket audio → Whisper → emotion classifier → Gemini → gTTS (`backend/app.py`, `backend/stt.py`).
-
 
 ## ✨ Project Overview
 

@@ -1,5 +1,11 @@
 # 🗣️ Conversational Emotion Recognizer (Advanced AI Companion)
 
+> **Team project.** The original repository is by [vidhhya1](https://github.com/vidhhya1/Conversational-Emotion-Recognizer), who developed the base project, including the fine-tuned emotion classifier. This copy is maintained by [Abhinaaya](https://github.com/Abhinaaya).
+>
+> **Contributions in this copy (Abhinaaya):**
+> - Emotion- and pitch-conditioned prompt design and response generation with Google Gemini, including fallback replies when the API fails (`backend/response_generator.py`).
+> - End-to-end pipeline integration: WebSocket audio → Whisper → emotion classifier → Gemini → gTTS (`backend/app.py`, `backend/stt.py`).
+
 
 ## ✨ Project Overview
 
@@ -11,7 +17,7 @@ This project goes beyond simple text processing, leveraging cutting-edge AI mode
 
 * **🎙️ Real-time Speech-to-Text (STT):** Utilizes OpenAI's highly accurate Whisper model to instantly transcribe the user's spoken words into text, forming the foundation for subsequent AI processing.
 * **❤️ Advanced Emotion Detection:** Employs a meticulously fine-tuned Hugging Face Transformers model to analyze the nuances of transcribed text, classifying the user's mood into distinct categories such as Happy, Sad, Surprised, Angry, Anxious, or Neutral. This enables a deeper understanding of emotional context.
-* **🧠 Emotion-Aware Response Generation:** Integrates the powerful Google Gemini Pro API to dynamically craft empathetic, supportive, and contextually relevant textual replies. The AI's responses are intelligently tailored based on both the user's spoken content and the precisely detected emotional state.
+* **🧠 Emotion-Aware Response Generation:** Integrates the powerful Google Gemini API to dynamically craft empathetic, supportive, and contextually relevant textual replies. The AI's responses are intelligently tailored based on both the user's spoken content and the precisely detected emotional state.
 * **🗣️ Natural Text-to-Speech (TTS) Output:** Converts the AI's generated textual responses back into clear, natural-sounding human speech. This is powered by Google's Text-to-Speech (gTTS) library, ensuring an auditory and engaging conversational experience for the user.
 * **⚡ Seamless Real-time Interaction:** Facilitates smooth, near-instantaneous conversational turns through an efficient WebSocket-based communication channel between the web frontend and the Python backend.
 * **🕒 Automatic End-of-Speech Detection:** Features an intelligent, client-side mechanism that automatically detects prolonged pauses or silence (e.g., 5 seconds of inactivity) in the user's speech, triggering the end of recording and initiation of backend processing without requiring manual intervention.
@@ -25,7 +31,7 @@ This project goes beyond simple text processing, leveraging cutting-edge AI mode
 2.  **Stream to Backend:** These audio chunks are continuously streamed over a **WebSocket** connection to the `backend` server.
 3.  **Speech-to-Text (STT):** The `backend` accumulates the incoming audio chunks. Upon detection of a pause (automatic or manual stop), OpenAI's **Whisper model** efficiently transcribes the complete user utterance into text.
 4.  **Emotion Detection:** The transcribed text is then analyzed by a **fine-tuned Hugging Face Transformers model** to accurately identify the user's underlying emotion.
-5.  **Response Generation:** Both the user's transcribed text and the detected emotional context are sent to the **Google Gemini Pro API**. Gemini intelligently generates an empathetic, supportive, and conversational text response.
+5.  **Response Generation:** Both the user's transcribed text and the detected emotional context are sent to the **Google Gemini API**. Gemini intelligently generates an empathetic, supportive, and conversational text response.
 6.  **Text-to-Speech (TTS):** The AI's generated text response is converted back into an audio format (WAV bytes) using **gTTS** and **pydub**, preparing it for playback.
 7.  **Stream to Frontend:** The generated audio bytes of the AI's response are streamed back to the `frontend` over the same WebSocket connection.
 8.  **AI Speaks:** The `frontend` receives and plays the audio, delivering the AI's response to the user, thereby completing a conversational turn.
@@ -79,8 +85,8 @@ Before you begin, ensure you have the following installed on your system:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/vidhhya1/Conversational-Emotion-Recognizer.git
-    cd Conversational-Emotion-Recognizer
+    git clone https://github.com/Abhinaaya/Empath_Echo.git
+    cd Empath_Echo
     ```
     
 
@@ -131,7 +137,7 @@ Before you begin, ensure you have the following installed on your system:
     *The terminal will display messages indicating the Flask server is starting and running (e.g., `* Running on http://127.0.0.1:5000`). Keep this terminal window open and active.*
 
 8.  **Open the Frontend in your Web Browser:**
-    * Using your file explorer, navigate to the `frontend` directory: `conversational-emotion-recognizer/frontend/`.
+    * Using your file explorer, navigate to the `frontend` directory: `Empath_Echo/frontend/`.
     * **Double-click** on the `index.html` file.
     * Your default web browser will open the AI Companion application.
 
@@ -158,7 +164,7 @@ Before you begin, ensure you have the following installed on your system:
 
 To provide a clear overview of the project's organization, here's its directory structure:
 ```
-conversational-emotion-recognizer/
+Empath_Echo/
 ├── backend/
 │   ├── fine_tuned_emotion_model/  # Directory containing your fine-tuned Hugging Face Transformers model files (e.g., config.json, model.safetensors, tokenizer files)
 │   ├── app.py                     # The main Flask application, serving as the backend server and orchestrating components via WebSockets
